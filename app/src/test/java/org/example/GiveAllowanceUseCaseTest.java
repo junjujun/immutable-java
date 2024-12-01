@@ -9,14 +9,14 @@ public class GiveAllowanceUseCaseTest {
     @Test
     public void testGiveAllowance() {
         Child taro = new Child("Taro");
-        Money money = new Money(500);
-        taro.receiveAllowance(money);
-        assertEquals(money, taro.pocket());
+        Money fiveHundred = new Money(500);
+        taro.receiveAllowance(fiveHundred);
+        assertEquals(fiveHundred, taro.pocket());
 
         Child jiro = new Child("Jiro");
-        money.plus(500);
-        jiro.receiveAllowance(money);
-        assertEquals(money, jiro.pocket());
+        Money oneThousand = fiveHundred.plus(500);
+        jiro.receiveAllowance(oneThousand);
+        assertEquals(oneThousand, jiro.pocket());
 
         assertEquals(new Money(500), taro.pocket());
     }
