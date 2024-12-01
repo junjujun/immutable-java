@@ -7,7 +7,7 @@ public class Money {
         this.value = value;
     }
 
-    public void add(final int value) {
+    public void plus(final int value) {
         this.value += value;
     }
 

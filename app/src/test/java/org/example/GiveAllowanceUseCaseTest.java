@@ -14,7 +14,7 @@ public class GiveAllowanceUseCaseTest {
         assertEquals(money, taro.pocket());
 
         Child jiro = new Child("Jiro");
-        money.add(500);
+        money.plus(500);
         jiro.receiveAllowance(money);
         assertEquals(money, jiro.pocket());
 
