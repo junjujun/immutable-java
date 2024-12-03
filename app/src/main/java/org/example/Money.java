@@ -1,21 +1,25 @@
 package org.example;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public final class Money {
-    private final int value;
+    private final BigDecimal value;
 
-    public Money(final int value) {
+    public Money(final BigDecimal value) {
+        if (value == null || value.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Money value must be non-null and non-negative");
+        }
         this.value = value;
     }
 
-    public Money plus(final int value) {
-        return new Money(this.value + value);
+    public Money plus(final BigDecimal value) {
+        return new Money(this.value.add(value));
     }
 
     @Override
     public String toString() {
-        return "value: " + value;
+        return "value: " + value.toPlainString();
     }
 
     @Override
@@ -27,11 +31,11 @@ public final class Money {
             return false;
         }
         Money money = (Money) obj;
-        return value == money.value;
+        return value.compareTo(money.value) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value); // プロパティに基づいたハッシュコードを生成
+        return Objects.hash(value);
     }
 }
