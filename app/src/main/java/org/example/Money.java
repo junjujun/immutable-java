@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class Money {
+public final class Money {
     private final int value;
 
     public Money(final int value) {
